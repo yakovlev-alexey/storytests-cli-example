@@ -1,0 +1,42 @@
+name: "Node CI"
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  node-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build Themekit
+        run: yarn build-themekit
+
+      - name: Build Storybook
+        run: yarn build-storybook
+
+      - name: Deploy Storybook
+        run: yarn deploy --domain $DOMAIN
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          DOMAIN: storytests-${{ github.event.number }}.surge.sh/
+
+      - name: Generate missing screenshot tests
+        run: yarn storytests
+
+      # Ignored because a selenium grid is requried to run
+      # - name: Hermione screenshot tests
+      #   run: yarn hermione:test
+      #   env:
+      #     HERMIONE_BASE_URL: http://storytests-${{ github.event.number }}.surge.sh/
+
+      - name: Playwright screenshot tests
+        run: yarn playwright
+        env:
+          STORYBOOK_URL: http://storytests-${{ github.event.number }}.surge.sh/

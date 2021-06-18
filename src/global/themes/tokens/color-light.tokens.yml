@@ -1,0 +1,11 @@
+color:
+  primary:
+    value: '#F4915A'
+  primary-light:
+    value: '#FFAA7A'
+  primary-dark:
+    value: '#E18A5A'
+  secondary:
+    value: '#dedede'
+  ring:
+    value: '#fffa45a0'
