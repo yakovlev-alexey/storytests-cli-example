@@ -1,0 +1,15 @@
+button:
+  padding:
+    value: 8px
+  borderRadius:
+    value: 4px;
+  size:
+    s:
+      height:
+        value: 24px
+    m:
+      height:
+        value: 32px
+    l:
+      height:
+        value: 48px
