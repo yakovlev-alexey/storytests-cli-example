@@ -14,8 +14,11 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Build Themekit
+        run: yarn build-themekit
+
       - name: Build Storybook
-        run: yarn build
+        run: yarn build-storybook
 
       - name: Build Storybook
         run: yarn deploy --domain $DOMAIN
