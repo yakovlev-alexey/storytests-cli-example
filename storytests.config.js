@@ -1,6 +1,7 @@
 const path = require("path");
 const hermioneTemplate = require("./storytests/hermione.template");
 const playwrightTemplate = require("./storytests/playwright.template");
+const puppeteerTemplate = require("./storytests/puppeteer.template");
 
 module.exports = {
   /**
@@ -41,7 +42,7 @@ module.exports = {
   /**
    * Generate `hermione` and `playwright` (though we can use any names here, they get passed to our hooks)
    */
-  testFilePostfixes: ["hermione", "playwright"],
+  testFilePostfixes: ["hermione", "playwright", "puppeteer"],
 
   /**
    * Glob pattern to match story files
@@ -61,6 +62,8 @@ module.exports = {
         return hermioneTemplate(componentPath, stories);
       case "playwright":
         return playwrightTemplate(componentPath, stories);
+      case "puppeteer":
+        return puppeteerTemplate(componentPath, stories);
       default:
         return false;
     }

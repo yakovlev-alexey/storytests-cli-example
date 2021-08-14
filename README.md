@@ -4,7 +4,7 @@ This repository contains example configuration for [storytests-cli](https://gith
 
 ## Configuration
 
-You can discover storytests configuration in [storytests.config.js](./storytests.config.js) with commentary over configuration options. On the high level `storytests-cli` is configured to generate screenshot tests using [`hermione`](https://github.com/gemini-testing/hermione) and [`playwright`](https://playwright.dev) from `*.stories.tsx` files.
+You can discover storytests configuration in [storytests.config.js](./storytests.config.js) with commentary over configuration options. On the high level `storytests-cli` is configured to generate screenshot tests using [`hermione`](https://github.com/gemini-testing/hermione), [`puppeteer`](https://github.com/puppeteer/puppeteer) and [`playwright`](https://playwright.dev) from `*.stories.tsx` files.
 
 You can see `storytests-cli` in action by passing `-r` flag to force rewrite on existing test files. To run actual tests use `STORYBOOK_URL=http://localhost:6006/ yarn playwright` and `yarn hermione:gui` or `yarn hermione:test`.
 
